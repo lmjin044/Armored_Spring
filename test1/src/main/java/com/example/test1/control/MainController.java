@@ -50,15 +50,24 @@ public class MainController {
 	
 	@PostMapping("/signUp")	//받는 방식이 get과 post 중 어떤 것이냐에 따라 선택해서 하자.
 	public String signUpSave(
-			@RequestParam("userId") String id,
-			@RequestParam("userPw") String pw,
-			@RequestParam("userPn") String tel,
-			@RequestParam("userBd") String birth) {
+			@RequestParam("id") String id,
+			@RequestParam("pw") String pw,
+			@RequestParam("tel") String tel,
+			@RequestParam("birth") String birth) {
 		System.out.println(id);
 		
 		return "member/signUp";
 	}
 	//괄호 안에 가져올 것을 형식과 매개변수로 함께 지정하면 같이 가져온다. 
+	//또 다른 방법 : java bin 방식의 이용
+	/*
+	  1)클래스 인스턴스 변수를 input의 name과 일치시킨다.
+	  2)클래스의 생성자 메서드가 필요
+	  3)인스턴스 변수의 get-set
+	  4)인스턴스 변수의 제어자를 private로 고정할 것
+	  
+	 
+	 */
 	
 	
 }
