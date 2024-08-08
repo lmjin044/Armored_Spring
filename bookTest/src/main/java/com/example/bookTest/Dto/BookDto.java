@@ -8,6 +8,7 @@ import lombok.Setter;
 
 public class BookDto {
 
+	private int bookId;
 	private String bookTitle;
 	private String bookAuthor;
 	private int bookCost;
