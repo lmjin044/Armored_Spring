@@ -17,6 +17,13 @@ public class BookService {
 		this.bookDao = bookDAO;
 	}
 	
+	public void remove(int bid) {
+		bookDao.delete(bid);
+	}
+	
+	
+	
+	
 	//도서정보 DB에서 가져온, List에 저장된 데이터를 control에 넘겨주기
 	public List<BookDto> selectAll(){
 		return bookDao.select();
@@ -39,6 +46,10 @@ public class BookService {
 		if(bookDto != null) {//도서코드가 이미 DB에 저장 되어있는지 확인
 			bookDao.insert(bookDto);//BookDAO 클래스의 insert 메서드를 실행, 저장
 		}
+	}
+
+	public void update(BookDto bookDto) {
+		bookDao.update(bookDto);
 	}
 	
 	//도서정보를 저장하는 목적

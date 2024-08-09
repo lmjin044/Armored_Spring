@@ -17,6 +17,11 @@ public class CoffeeService {
 		this.coffeeDao=coffeeDao;
 	}
 	
+	public void remove(int cid) {
+		coffeeDao.delete(cid);
+	}
+	
+	
 	
 	public List<CoffeeDto> selectAll(){
 		return coffeeDao.select();
@@ -36,5 +41,9 @@ public class CoffeeService {
 		if(coffeeDto !=null) {
 			coffeeDao.insert(coffeeDto);
 		}
+	}
+
+	public void update(CoffeeDto coffeeDto) {
+		coffeeDao.update(coffeeDto);
 	}
 }

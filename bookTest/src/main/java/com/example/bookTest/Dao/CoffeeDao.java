@@ -20,17 +20,20 @@ public class CoffeeDao {
 		this.jt=jdbcTemplate;
 	}
 	
-	public CoffeeDto findId(int id) {
-		String sql="select * from coffee where coffee_id=?";
-		CoffeeDto data=jt.queryForObject(sql, new CoffeeDtoRowMapper(), id);
-		return data;
+	public void delete(int cid) {
+		String sql="delete from coffee where coffee_id=?";
+		jt.update(sql, cid);
 	}
 	
 	
 	
 	
-	
-	
+	public CoffeeDto findId(int id) {
+		String sql="select * from coffee where coffee_id=?";
+		CoffeeDto data=jt.queryForObject(sql, new CoffeeDtoRowMapper(), id);
+		return data;
+	}
+		
 	public List<CoffeeDto> select(){
 		String sql = "select * from coffee";
 		List<CoffeeDto> list = jt.query(sql, new CoffeeDtoRowMapper());
@@ -62,4 +65,11 @@ public class CoffeeDao {
 		}
 		
 	}
+
+	public void update(CoffeeDto coffeeDto) {
+		String sql="update coffee set item_name=?, price=?, deCaffein=? where coffee_id=?";
+		jt.update(sql, coffeeDto.getItemName(), coffeeDto.getPrice(), coffeeDto.getDeCaffein(), coffeeDto.getCoffeeId());
+	}
+
+	
 }

@@ -56,6 +56,27 @@ public class BookController {
 		return new ModelAndView("/book/view").addObject("book",data);
 	}
 	
+	@GetMapping("/book/delete")
+	public String bookRemove(@RequestParam("id")int bid) {
+			
+		bookService.remove(bid);
+		return "redirect:/";
+		
+		//return "<script> alert('삭제되었습니다.'); location.href='/' </script>";
+		// ㄴ이건 삭제 메시지 알람이 뜨면서 삭제 되는거고.
+	}
+	
+	@GetMapping("/book/update")
+	public String bookUpdate(@ModelAttribute BookDto bookDto,
+			@RequestParam("id")int id) {
+		bookDto.setBookId(id);
+		bookService.update(bookDto);
+		
+		return "redirect:/book/view?id="+id;
+		//수정된 도서의 상세페이지로 이동
+	}
+	
+	
 	
 	
 	

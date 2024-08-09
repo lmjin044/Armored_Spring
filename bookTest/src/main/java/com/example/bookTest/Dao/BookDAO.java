@@ -21,6 +21,14 @@ public class BookDAO {
 		//Autowired 애러테이션이 없으면 bean을 받아오지 못함
 	}
 	
+	public void delete(int bid) {
+		String sql="delete from book where book_id=?";
+		jt.update(sql, bid);
+	}
+	
+	
+	
+	
 	//도서 정보 가져오기(book_id 칼럼 통해서)
 	//book_id 칼럼은 중복 데이터를 가질 수 없는 유일 값이므로
 	//
@@ -95,6 +103,13 @@ public class BookDAO {
 			return bookDto;
 		}
 		//이거 만드는 이유 : db기준 맨 앞줄 book_id 컬럼때문에 오류나는거 해결하려고
+		
+	}
+
+	public void update(BookDto bookDto) {
+		String sql ="update book set book_title=?, book_author=?, book_cost=?, book_page=?, publisher=? where book_id=?";
+		jt.update(sql, bookDto.getBookTitle(), bookDto.getBookAuthor(),	bookDto.getBookCost(), bookDto.getBookPage(),bookDto.getPublisher(),bookDto.getBookId());
+		
 		
 	}
 	
