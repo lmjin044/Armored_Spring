@@ -22,6 +22,14 @@ public class CoffeeService {
 		return coffeeDao.select();
 	}
 	
+	public CoffeeDto getCoffee(int id) {
+		if(id!=0) {
+			return coffeeDao.findId(id);
+		}
+		return null;
+	}
+	
+	
 	
 	
 	public void CoffeeSave(CoffeeDto coffeeDto) {

@@ -20,6 +20,17 @@ public class CoffeeDao {
 		this.jt=jdbcTemplate;
 	}
 	
+	public CoffeeDto findId(int id) {
+		String sql="select * from coffee where coffee_id=?";
+		CoffeeDto data=jt.queryForObject(sql, new CoffeeDtoRowMapper(), id);
+		return data;
+	}
+	
+	
+	
+	
+	
+	
 	public List<CoffeeDto> select(){
 		String sql = "select * from coffee";
 		List<CoffeeDto> list = jt.query(sql, new CoffeeDtoRowMapper());

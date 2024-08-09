@@ -22,7 +22,13 @@ public class BookService {
 		return bookDao.select();
 	}
 	
-	
+	//도서 상세 정보 가져오기 : id 파라미터 값의 DAO 데이터를 넘겨서 조회 및 결과 받아 control에 넘기기
+	public BookDto getBook(int id) {
+		if(id!=0) {
+			return bookDao.findId(id);
+		}
+		return null;	//id 파라미터 없이 /book/view 주소 요청 들어오면 null 반환
+	}
 	
 	
 	

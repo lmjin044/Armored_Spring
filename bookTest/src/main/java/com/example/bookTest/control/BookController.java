@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.bookTest.Dto.BookDto;
@@ -42,6 +43,20 @@ public class BookController {
 		return "index";
 		
 	}
+	
+	@GetMapping("/book/view")
+	public ModelAndView view(@RequestParam(value = "id", 
+							required = false, defaultValue="0")int id ) {
+		BookDto data = bookService.getBook(id);
+		if(data == null) data = new BookDto();	
+			//getBook메서드의 변환값으로 null이 저장되면?
+			//view.jsp에서 변수의 값이 null이므로 get 메서드 호출이 안 되어 어류 발생
+			//오류 발생이 되지 않도록 빈 값이 있는 객체를 할당하기.
+		
+		return new ModelAndView("/book/view").addObject("book",data);
+	}
+	
+	
 	
 	
 	@GetMapping("/write")
