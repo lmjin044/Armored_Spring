@@ -31,7 +31,8 @@ $(function(){
 			}
             // .trim()을 올바르게 호출하여 공백을 제거한 후
             $(v).html("<input type='" + inputType[i] + "' name='" + inputName[i] + "' value='" + text + "'>");
-        });    
+			$input = '<input type="radio" name="deCaffein" value ="0" checked>카페인' + '<input type="radio" name="deCaffein" value ="1"디카페인'});
+			    
 		
 		$(this).attr("id", "mod");
 

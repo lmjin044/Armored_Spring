@@ -67,4 +67,5 @@ public class CoffeeControl {
 		return "redirect:/coffee/view?id="+id;
 	}
 	
+	
 }

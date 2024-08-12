@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>thymeleaf 엔진 적용 페이지</h1>
+	<h2>적용하려면 application.properties 에 이렇게 적용해줘야 한다.</h2>
+	<h3>#thymeleaf set</h3>
+	<h3>spring.thymeleaf.prefix=classpath:templates/</h3>
+	<h3>spring.thymeleaf.suffix=.html</h3>
+	<h3>spring.thymeleaf.cache=false</h3>
+	<div th:text="${name}"></div>
+	<div th:class="aaa">이순신</div>
+	<!-- 태그 안에 텍스트로 글씨를 넣게 하고 싶다면 이렇게 하면 된다. 
+	단 이렇게 하면 자바스크립트에 적용되지 않음-->
+	
+	<table th:object="${member}">
+	<!-- 타임리프에서...
+	${} = model, ModelAndView로 지정한 name만 사용// 변수 값 출력 시 사용
+	*{} = th:object 객체 지정 후 객제 필드 명(get 메서드) 표현
+		  member.age, member.tel이라 고 해야 하지만 
+		  <div th:object ="${member}">
+		  	<div th:text = "*{age}"> </div>
+		  </div>
+		  라는 표현이 가능
+		  
+	@{} = url 링크 표현식 
+		<a th:href = "/test"></a>
+		<a th:href = "@{/test}"></a>
+		
+	#{} = 메시지, properties의 값을 표현 할 때 사용
+	
+	th:each = 반복문은 li 태그와 같이 실제로 출력할 내용에다 써야 함
+			  items에 배열 혹은 컬렉션 프레이워크 객체가 담겨있을 경우 아래와 같다.
+			  
+	 <ul>
+	 	<li  th:each ="a: ${animal}" th:text=${a}></li>
+	 </ul>			  
+			  
+			  
+	th:if or th:unless or th:switch 등 삼항(조건)연산자 
+	= 조건문 : 
+	단 조건식 하나에 참 혹은 거짓만 설정할 수 있으며 
+	그 반대항에 거짓으로 출력할 내용을 별도로 입력해야 한다.
+	또한 unless를 사용할 때는 if와 동일한 조건을 수행해야 한다.
+			  
+	예시 = num 변수에 10이라는 값이 저장되었을 경우
+	
+	<p th:if="${num>5>}"> 5보다 크다</p> : 5보다 클 경우 실행
+	<p th:unless="${num>5}">5보다 작다</p> : 5보다 작을 경우 실행
+	 
+	 혹은 이렇게 해도 됨
+    <h1 th:text="${member.age>=20 ? '성인' : '미성년자'}"></h1>
+	 
+	출력 방법 : 
+	1)th:text ="${변수명}"
+	2)th:utext = "${변수}"
+		ㄴ u가 붙은 것과 없는 것 간의 차이는?
+			: utext = untext로 html 태그가 적용된다.
+	3)th:value="${변수}"
+		ㄴ input태그와 select 태그에 사용됨
+	
+	th:with = 변수 생성 및 값을 저장하는 방법
+	<div th:with=num=100">
+	 
+	타임리프 내에서 주석을 사용하는 방법? <!--/* */--!> 
+	 			  
+		<tr>
+			<td>이름</td><td th:text="*{name}"></td>
+		</tr>
+		<tr>
+			<td>연락처</td th:text="*{tel}"><td></td>
+		</tr>
+		<tr>
+			<td>나이</td th:text="*{age}"><td></td>
+		</tr>
+		<tr>
+			<td>이메일</td><td th:text="*{email}"></td>
+		</tr>
+		
+		<form th:object="${member">
+			<input th:field="*{name}">
+			<input th:field="*{age}">
+			<input th:field="*{tel}">
+			<input th:field="*{email}">
+			
+		
+		</form>
+		
+		
+	</table>
+	 -->
+	 
+	 
+	 <ul>
+	 	<li  th:each ="a: ${animal}" th:text=${a}></li>
+	 </ul>
+	 
+	 <div th:if ="${member.age>20}">
+	 	성인입니다.
+	 </div>
+	 	 <div th:unless ="${member.age>20}">
+	 	청소년입니다.
+	 </div>
+	 
+	 <h1 th:text="${member.age>=20 ? '성인' : '미성년자'}"></h1>
+	 
+	 <div th:switch="${name}">
+	 	<p th:case="김유신">신라 장수</p>
+	 	<p th:case="최영">고려 장수</p>
+	 	<p th:case="이순신">조선 장수</p>
+	 	<p th:case="계백">백재 장수</p>
+	 	
+	 </div>
+	 
+	 <div th:text ="${tag}"></div>
+	 <div th:utext = "${tag}"></div>
+	 
+	 
+	 <div th:with="num=100">
+	 	<span th:text="${num}"></span>
+	 </div>
+	 
+</body>
+</html>

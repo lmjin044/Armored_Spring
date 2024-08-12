@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게임동아리</title>
+
+<link rel = "stylesheet" href="/css/game.css">
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous">
+    </script>
+<script src = "/js/game.js"></script>
+
+</head>
+<body>
+	<div id="wrap">
+		<div id = "header">
+			<div id ="nav">
+				<ul id="menuList">
+					<li><a href="">인기게임</a></li>
+					<li><a href="">출시예정</a></li>
+					<li><a href="">베타테스트</a></li>
+					<li><a href="/game/review"></a>이용자 후기</li>
+				</ul>
+				<div id="userALogo">
+					<div class="userbox">
+						<span class="LoginLink">
+							<a th:href="@{/game/login}">로그인</a>
+							</span>
+						<span class="userService">고객센터</span>
+					</div>
+					<div class="logo"></div>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+</body>
+</html>
