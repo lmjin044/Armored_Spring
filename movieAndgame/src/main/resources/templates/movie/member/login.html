@@ -1,43 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{/movie/default}">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel = "stylesheet" href="/css/default.css">
-    <script
-        src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossorigin="anonymous">
-    </script>
 
-<script src = "/js/default.js"></script>
+<title layout:fragment="title">로그인</title>
 
 </head>
 
-
-
-<body>
-	<div id="wrap">
-		<div id = "header">
-			<div id ="nav">
-				<ul id="menuList">
-					<li><a href="">상영영화</a></li>
-					<li><a href="">예정영화</a></li>
-					<li><a href="">시사회</a></li>
-					<li><a href="/movie/review"></a>생생후기</li>
-				</ul>
-				<div id="userALogo">
-					<div class="userbox">
-						<span class="LoginLink">
-							<a th:href="@{/movie/login}">로그인</a>
-							</span>
-						<span class="userService">고객센터</span>
-					</div>
-					<div class="logo"></div>
-				</div>
-			</div>
-		</div>
-		<div id="main">
+		
+		<div layout:fragment="main" id="main">
 			<form method="post" th:action="@{/movie/signIn}" th:object="${member}">
 				<div id="formData">
 					<div class="inputField">
@@ -62,7 +33,5 @@
 			</div>
 			
 		</div>
-		<div id="footer">
-		</div>
-</body>
+
 </html>

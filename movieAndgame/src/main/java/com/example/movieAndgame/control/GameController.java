@@ -12,13 +12,24 @@ import com.example.movieAndgame.Dto.GameMember;
 public class GameController {
 
 	@GetMapping("/index")
-	public String Home() {
+	public String home(Model model) {
+
 		return "game/index";
 	}
-	
+
 	@GetMapping("/login")
-	public String loginHome(Model model) {
-		model.addAttribute("member", new GameMember());
+	public String login(Model model) {
+
+		model.addAttribute("gameMember" , new GameMember());		
 		return "game/member/login";
 	}
+	
+	
+	@GetMapping("/signUp")
+	public String signUp(Model model) {
+		model.addAttribute("", model);
+		
+		return "game/member/signUp";
+	}
+	
 }

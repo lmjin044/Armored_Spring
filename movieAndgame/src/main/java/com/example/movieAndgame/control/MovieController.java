@@ -26,6 +26,12 @@ public class MovieController {
 	}
 	
 	
+	@GetMapping("/signUp")
+	public String signUp(Model model) {
+		model.addAttribute("movieMember", new MovieMember());
+		
+		return "movie/member/join";
+	}
 	
 	
 }
