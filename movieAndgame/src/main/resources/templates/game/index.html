@@ -4,15 +4,34 @@ layout:decorate="~{/game/default}">
 
 <head>
 <title layout:fragment="title">게임톡톡</title>
+	<th:block layout:fragment="css"></th:block>
+	<th:block layout:fragment="script"></th:block>
 </head>
 <body>
 
 		
 	<div layout:fragment="main" id="main">
-		
-		
+			<div layout:fragment="main" id="main">
+			<div id="section_top">
+				<h3>최신 작성 리뷰</h3>
+				<p> <a href="/gamePost/postWrite">리뷰</a>	</p>
+			</div>
+			
+			<div id="section_middle">
+				<table id="reviewList">
+				</table>
+			</div>
+			
+			<div id="section_bottom">
+				<div id="searchBox">
+				</div>
+			</div>
+		</div>
 	</div>
 
 
 </body>
 </html>
+
+
+

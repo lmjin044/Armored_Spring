@@ -5,6 +5,16 @@ layout:decorate="~{/movie/default}">
 
 <title layout:fragment="title">로그인</title>
 
+	<th:block layout:fragment="script">
+		<script src="js/movie_login.js"></script>
+	</th:block> 
+	
+	<th:block th:if="${fail}">
+		<script th:inline="javascript">
+			alert("아이디 혹은 비밀번호를 잘못 입력하셨습니다.");
+		</script>
+	</th:block>
+	
 </head>
 
 		
