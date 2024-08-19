@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class MovieReviewDto {
-	private int reviewId;
+	private int review_id;
 	
 	@NotBlank(message="제목을 입력하세요")
 	private String title;
@@ -20,5 +20,5 @@ public class MovieReviewDto {
 	
 	@Size(min=10, max=300, message="10~300자 입력 가능합니다.")
 	private String content;
-	private LocalDateTime writeDate;
+	private LocalDateTime write_date;
 }

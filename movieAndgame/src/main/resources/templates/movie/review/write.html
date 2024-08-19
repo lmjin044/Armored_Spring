@@ -10,7 +10,7 @@ layout:decorate="~{/movie/default}">
 
 <div layout:fragment="main" id="main">
 	<h2>리뷰 작성</h2>
-	<form method="get" action="/movieMenu/review" th:object="${movieReviewDto}" >
+	<form method="get" action="/movieMenu/write" th:object="${movieReviewDto}" >
 		작성자 : <input type="text" th:field="*{writer}" readonly="readonly"> <br>
 			<!-- readonly는 말 그대로 해당 데이터필드의 값을 변경하지 못하는 거 -->
 		제목 : <input type="text" th:field="*{title}"> <br>

@@ -1,5 +1,7 @@
 package com.example.movieAndgame.control;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,11 +27,14 @@ public class GamePostControl {
 	
 	@GetMapping("/m")
 	public String reviewMain(Model model) {
+		
+		List<GameReviewDto> list = gameReviewService.reviewlist();
+		model.addAttribute("reviewList", list);
 		return "game/post/index";
 	}
 	
 	
-	@GetMapping("/postWrite")
+	@GetMapping("/write")
 	public String write(Model model, HttpSession session) {
 		if(session.getAttribute("user") ==null) {
 			return "redirect:/game/login";
@@ -43,7 +49,7 @@ public class GamePostControl {
 	}
 	
 	
-	@PostMapping("/postWrite")
+	@PostMapping("/write")
 	public String write(@Valid GameReviewDto gameReviewDto, BindingResult bindingResult, Model model) {
 	    if(bindingResult.hasErrors()) {
 	        // 기존 작성 페이지로 돌아가면서 에러 메시지를 표시
@@ -53,6 +59,15 @@ public class GamePostControl {
 	    // 인스턴스를 통해 서비스 메서드 호출
 	    gameReviewService.review(gameReviewDto);
 	    return "redirect:/gamePost/m";
+	}
+	
+	@GetMapping("/view/{id}")
+	public String view(@PathVariable("id") int id, Model model) {
+		
+		GameReviewDto dto = gameReviewService.findById(id);
+		model.addAttribute("gameReviewDto", dto);
+		
+		return "game/post/detail";
 	}
 }
 

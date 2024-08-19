@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.movieAndgame.Dao.GameReviewDaoImpl">
+
+	<select id="findById" resultType="com.example.movieAndgame.Dto.GameReviewDto">
+		select * from game_review where post_id=#{id}
+	</select>
+
+
+	<select id="findAll" resultType="com.example.movieAndgame.Dto.GameReviewDto">
+		select * from game_review order by write_date desc
+	</select>
+
+
 	<insert id="reviewSave" parameterType="com.example.movieAndgame.Dto.GameReviewDto">
 		insert into game_review(writer, title, game_name, target_post, write_date)
 		values
-		(#{writer}, #{title}, #{game_name}, #{target_pos}, #{write_date})
+		(#{writer}, #{title}, #{game_name}, #{target_post}, now())
 	</insert>
 
 </mapper>

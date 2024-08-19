@@ -15,6 +15,24 @@ layout:decorate="~{/movie/default}">
 		
 		<div id="section_middle">
 			<table id="reviewList">
+				<tr>
+					<th class="num">번호</th>
+					<th class="title">제목</th>
+					<th class="date">작성일</th>
+				</tr>
+
+				<tr th:each="row : ${reviewList}">
+				<!-- th:each="변수 : ${배열 혹은 컬렉션}"
+				동작 : ${}의 인덱스 값(0)부터  -->
+					<td class="num" th:text="${row.review_id}"></td>
+					<td class="title">
+						<a th:href="@{'/movieMenu/view/' + ${row.review_id}}" th:text="${row.title}"></a>
+					</td>
+					<td class="date" th:text="${#temporals.format(row.write_date, 'yy.mm.dd')}"></td>
+				</tr>
+<!-- thymeleaf 날짜 출력: 
+1) ${#temporals.formatISO(변수명)
+2) ${#temporals.foramt(row.write_date, 'yy,mm,dd')} -->
 			</table>
 		</div>
 		

@@ -10,17 +10,17 @@ layout:decorate="~{/game/default}">
 
 <div layout:fragment="main" id="main">
 	<h2>리뷰 작성</h2>
-	<form method="get" action="/gamePost/review" th:object="${gameReviewDto}" >
+	<form method="post" action="/gamePost/write" th:object="${gameReviewDto}" >
 		작성자 : <input type="text" th:field="*{writer}" readonly="readonly"> <br>
 			<!-- readonly는 말 그대로 해당 데이터필드의 값을 변경하지 못하는 거 -->
 		제목 : <input type="text" th:field="*{title}"> <br>
 			<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
 			
-		게임이름 : <input type="text" th:field="*{gameName}"><br>
-			<p th:if="${#fields.hasErrors('gameName)}" th:errors="*{gameName}"></p>	
+		게임이름 : <input type="text" th:field="*{game_name}"><br>
+			<p th:if="${#fields.hasErrors('game_name')}" th:errors="*{game_name}"></p>	
 				
-		공략내용 : <textarea th:field="*{targetPost}"></textarea>
-			<p th:if="${#fields.hasErrors('targetPost')}" th:errors="*{targetPost}"></p>
+		공략내용 : <textarea th:field="*{target_post}"></textarea>
+			<p th:if="${#fields.hasErrors('target_post')}" th:errors="*{target_post}"></p>
 			
 	
 		<button>작성</button>
