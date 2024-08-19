@@ -1,5 +1,7 @@
 package com.example.movieAndgame.Service;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,10 @@ import com.example.movieAndgame.Dto.GameReviewDto;
 public class GameReviewService {
 
 	@Autowired
-	private GameReviewDaoImpl gameReviewDao;
-	public void save(GameReviewDto gameReviewDto) {
-		gameReviewDao.reviewSave(gameReviewDto);
+	private GameReviewDaoImpl gameReviewDaoImpl;
+	public void review(@Valid GameReviewDto gameReviewDto) {
+		gameReviewDaoImpl.reviewSave(gameReviewDto);
 	}
+
 	
 }
